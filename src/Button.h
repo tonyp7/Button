@@ -18,21 +18,23 @@
 
 class Button{
   private:
-    int state;
-    int pinNumber;
-    int lastReadState;
+    uint8_t state;
+    uint8_t pinNumber;
+    uint8_t lastReadState;
     uint8_t edge;
     uint8_t invertMode;
     uint8_t lastDebounceTime;
     const static unsigned int DEBOUNCE_DELAY = 100;
 	void (*functionRising)();
 	void (*functionFalling)();
+	void init();
   public: 
-    void init();
     void poll();
     void poll(unsigned long milliseconds);
     uint8_t rising();
     uint8_t falling();
-    Button(const int pin, const uint8_t invert);
+    Button(const uint8_t pin, const uint8_t invert);
+	Button(const uint8_t pin, const uint8_t pinModeValue, const uint8_t invert);
 	void attachFunction(void (*function)(), uint8_t edgeType);
+	uint8_t getState();
 };

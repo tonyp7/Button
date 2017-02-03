@@ -21,9 +21,17 @@
 
 /// \param pin arduino pin number used for this input
 /// \param invert allows to reverse input. Useful when using INPUT_PULLUP but you don't want to work with inverted logic.
-Button::Button(const int pin, const uint8_t invert){
+Button::Button(const uint8_t pin, const uint8_t invert){
   this->pinNumber = pin;
   this->invertMode = invert;
+  init();
+}
+
+Button::Button(const uint8_t pin, const uint8_t pinModeValue, const uint8_t invert){
+	pinMode(pin, pinModeValue);
+	this->pinNumber = pin;
+	this->invertMode = invert;
+	init();
 }
 
 
@@ -102,4 +110,8 @@ uint8_t Button::falling(){
     return true;
   }
   return false;
+}
+
+uint8_t Button::getState(){
+	return this->state;
 }
