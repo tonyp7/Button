@@ -9,7 +9,7 @@
   This example code is licensed under CC BY 4.0.
   Please see https://creativecommons.org/licenses/by/4.0/
 
-  modified 2nd February 2017
+  modified 5th February 2017
   by Tony Pottier
   
 */
@@ -23,14 +23,14 @@ class Button{
     uint8_t lastReadState;
     uint8_t edge;
     uint8_t invertMode;
-    uint8_t lastDebounceTime;
+    unsigned long lastDebounceTime;
     const static unsigned int DEBOUNCE_DELAY = 100;
 	void (*functionRising)();
 	void (*functionFalling)();
 	void init();
   public: 
     void poll();
-    void poll(unsigned long milliseconds);
+    void poll(const unsigned long milliseconds);
     uint8_t rising();
     uint8_t falling();
     Button(const uint8_t pin, const uint8_t invert);

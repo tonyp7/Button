@@ -9,7 +9,7 @@
   This example code is licensed under CC BY 4.0.
   Please see https://creativecommons.org/licenses/by/4.0/
 
-  modified 2nd February 2017
+  modified 5th February 2017
   by Tony Pottier
   
 */
@@ -61,7 +61,7 @@ void Button::poll(){
 }
 
 /// Read the input and debounce it. 
-void Button::poll(unsigned long milliseconds){
+void Button::poll(const unsigned long milliseconds){
   
   // read the state of the switch into a local variable:
   // Pullup mode are active low so we negate the reading to make it active high
